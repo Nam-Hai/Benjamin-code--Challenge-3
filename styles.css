@@ -1,0 +1,236 @@
+@font-face {
+	font-family: "GT Ultra Trial";
+	src: url("/fonts/GT-ULTRA-TRIAL.OTF") format("otf");
+}
+
+:root {
+	--primary: #fff38a;
+	--bg-primary: #060447;
+	--font-text: "Montserrat";
+	--font-title: "GT Ultra Trial";
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+body {
+	background: var(--bg-primary);
+	color: var(--primary);
+	padding: 7rem 10rem;
+	font-family: var(--font-text);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 28rem;
+	column-gap: 2rem;
+}
+
+.left {
+	width: 30rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.left img {
+	margin-bottom: 2rem;
+	height: 4rem;
+	width: 4rem;
+}
+
+h1 {
+	font-weight: 600;
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+p {
+	line-height: 1.5rem;
+}
+
+h2 {
+	font-size: 10rem;
+	font-family: var(--font-title);
+	font-weight: 600;
+	margin-bottom: -50px;
+}
+
+h2 > span {
+	font-size: 10rem;
+	font-family: var(--font-title);
+	font-weight: 600;
+}
+
+.right {
+	height: 100%;
+	aspect-ratio: 18 / 28;
+	overflow: hidden;
+}
+
+.carrousel {
+	height: 100%;
+	width: 1080px;
+	position: relative;
+	transform: translateX(0px);
+	display: flex;
+	flex-direction: row;
+}
+
+.right img {
+	height: 100%;
+}
+
+.timeline-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.buttons {
+	width: 7rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 1.5rem;
+}
+
+.buttons > img:first-child {
+	transform: rotate(180deg);
+}
+
+.timeline {
+	width: 40rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.etapier {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	border: 3px solid #827b68;
+	background: var(--primary);
+	position: relative;
+}
+
+.etapier.etapier-inactive {
+	background: #827b68;
+}
+
+.etapier::before {
+	content: "";
+	display: block;
+
+	top: calc(1rem - 5px);
+	left: -9.5rem;
+	height: 4px;
+	width: 9.5rem;
+	background: var(--primary);
+
+	position: absolute;
+	z-index: -1;
+}
+
+.etapier:first-child::before {
+	display: none;
+}
+
+.etapier:first-child::after {
+	display: none;
+}
+
+.etapier-inactive::after {
+	content: "";
+	display: block;
+	top: calc(1rem - 5px);
+	left: -8rem;
+	height: 4px;
+	width: 9.5rem;
+	background: #827b68;
+
+	position: absolute;
+	z-index: -1;
+}
+
+@media screen and (min-width: 1800px) {
+	.right {
+		height: 35rem;
+	}
+
+	.timeline-container {
+		width: 44rem;
+	}
+
+	.buttons {
+		width: 6rem;
+	}
+
+	.timeline {
+		width: 32rem;
+	}
+
+	.etapier::before {
+		width: 6rem;
+		left: -6rem;
+	}
+
+	.etapier-inactive::after {
+		width: 6rem;
+		left: -6rem;
+	}
+}
+
+@media screen and (max-width: 1360px) {
+	body {
+		padding: 5rem 5rem;
+	}
+
+	.container {
+		height: 30rem;
+		column-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.left {
+		width: unset;
+	}
+	.buttons {
+		display: none;
+	}
+
+	.timeline {
+		width: 100%;
+	}
+
+	.etapier::before {
+		width: calc(25vw - 4rem);
+		left: calc(-25vw + 4rem);
+	}
+
+	.etapier-inactive::after {
+		display: none;
+	}
+}
