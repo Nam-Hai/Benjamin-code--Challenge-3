@@ -1,9 +1,11 @@
 const etapiersList = document.querySelectorAll('.etapier');
-const leftArrow = ducument.querySelector('#left-arrow')
+const leftArrow = document.querySelector('#left-arrow');
+const rightArrow = document.querySelector('#right-arrow')
 let curIndex = 0;
 
 function changeFeaturedFeature(target) {
-    index = target.dataset.index;
+    index = Number(target.dataset.index);
+    console.log(index);
     afficheUpdate(index);
     etapierUpdate(index)
 }
@@ -13,12 +15,10 @@ function afficheUpdate(index) {
 }
 
 function etapierUpdate(targetIndex) {
-    let delayIndex = 0;
     let vitesseEtapier = 200;
+    let delayIndex = 0;
     if (curIndex < targetIndex) {
-        for (let index = curIndex; index <= targetIndex; index++) {
-
-
+        for (let index = curIndex + 1; index <= targetIndex; index++) {
             setTimeout(() => {
                 etapiersList[index].classList.remove('etapier-inactive');
             }, vitesseEtapier * delayIndex);
@@ -38,7 +38,6 @@ function etapierUpdate(targetIndex) {
 
 function etapierOnClick(event) {
 
-    console.log(event.target.dataset.index);
     // Clicker sur l'etapier courant ne fait rien
     if (event.target.dataset.index === curIndex) return
 
@@ -46,6 +45,24 @@ function etapierOnClick(event) {
 
 }
 
+let etapierIndex = 0;
 etapiersList.forEach(elem => {
+    if (etapierIndex === 3) return
     elem.addEventListener("click", etapierOnClick);
+    etapierIndex += 1;
 });
+
+
+leftArrow.addEventListener('click', leftArrowActoionner);
+function leftArrowActoionner(event) {
+    if (curIndex === 0) return
+    etapierUpdate(curIndex - 1);
+}
+
+rightArrow.addEventListener('click', rightArrowActoinner);
+function rightArrowActoinner(event) {
+    if (curIndex === 2) return
+    console.log(curIndex);
+    console.log(curIndex + 1);
+    etapierUpdate(curIndex + 1);
+}
