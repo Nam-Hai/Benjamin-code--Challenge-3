@@ -1,5 +1,5 @@
-const etapiers = document.querySelectorAll('.etapier');
-const curIndex = 0;
+const etapiersList = document.querySelectorAll('.etapier');
+let curIndex = 0;
 
 function changeFeaturedFeature(target) {
     index = target.dataset.index;
@@ -17,12 +17,22 @@ function etapierUpdate(index) {
 
 function etapierOnClick(event) {
 
+    console.log(event.target.dataset.index);
     // Clicker sur l'etapier courant ne fait rien
-    if (event.target.dataset.index == curIndex) return
+    if (event.target.dataset.index === curIndex) return
 
-    console.log('object');
+    curIndex = event.target.dataset.index;
+    for (let index = 0; index < etapiersList.length; index++) {
+        etapiersList[index].classList.add('etapier-inactive');
+
+        if (index <= curIndex) {
+            etapiersList[index].classList.remove('etapier-inactive');
+            console.log('yo');
+        }
+    }
+
 }
 
-etapiers.forEach(elem => {
+etapiersList.forEach(elem => {
     elem.addEventListener("click", etapierOnClick);
 });

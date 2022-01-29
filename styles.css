@@ -161,7 +161,7 @@ h2 > span {
 	display: none;
 }
 
-.etapier-inactive::after {
+.etapier.etapier-inactive::after {
 	content: "";
 	display: block;
 	top: calc(1rem - 5px);
@@ -172,6 +172,20 @@ h2 > span {
 
 	position: absolute;
 	z-index: -1;
+}
+
+.etapier::after {
+	content: "";
+	display: block;
+	top: calc(1rem - 5px);
+	left: 0rem;
+	height: 4px;
+	width: 0rem;
+	background: #827b68;
+
+	position: absolute;
+	z-index: -1;
+	transition: width 250ms, left 250ms;
 }
 
 @media screen and (min-width: 1800px) {
