@@ -1,4 +1,5 @@
 const etapiersList = document.querySelectorAll('.etapier');
+const leftArrow = ducument.querySelector('#left-arrow')
 let curIndex = 0;
 
 function changeFeaturedFeature(target) {
@@ -11,8 +12,28 @@ function afficheUpdate(index) {
 
 }
 
-function etapierUpdate(index) {
+function etapierUpdate(targetIndex) {
+    let delayIndex = 0;
+    let vitesseEtapier = 200;
+    if (curIndex < targetIndex) {
+        for (let index = curIndex; index <= targetIndex; index++) {
 
+
+            setTimeout(() => {
+                etapiersList[index].classList.remove('etapier-inactive');
+            }, vitesseEtapier * delayIndex);
+            delayIndex += 1;
+        }
+    } else {
+        for (let index = curIndex; index > targetIndex; index--) {
+
+            setTimeout(() => {
+                etapiersList[index].classList.add('etapier-inactive');
+            }, vitesseEtapier * delayIndex);
+            delayIndex += 1;
+        }
+    }
+    curIndex = targetIndex;
 }
 
 function etapierOnClick(event) {
@@ -21,15 +42,7 @@ function etapierOnClick(event) {
     // Clicker sur l'etapier courant ne fait rien
     if (event.target.dataset.index === curIndex) return
 
-    curIndex = event.target.dataset.index;
-    for (let index = 0; index < etapiersList.length; index++) {
-        etapiersList[index].classList.add('etapier-inactive');
-
-        if (index <= curIndex) {
-            etapiersList[index].classList.remove('etapier-inactive');
-            console.log('yo');
-        }
-    }
+    changeFeaturedFeature(event.target);
 
 }
 

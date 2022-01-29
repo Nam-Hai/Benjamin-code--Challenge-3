@@ -133,6 +133,8 @@ h2 > span {
 	border: 3px solid #827b68;
 	background: var(--primary);
 	position: relative;
+	transition-property: background;
+	transition-delay: 190ms;
 }
 
 .etapier.etapier-inactive {
@@ -154,11 +156,11 @@ h2 > span {
 }
 
 .etapier:first-child::before {
-	display: none;
+	display: none !important;
 }
 
 .etapier:first-child::after {
-	display: none;
+	display: none !important;
 }
 
 .etapier.etapier-inactive::after {
@@ -185,7 +187,7 @@ h2 > span {
 
 	position: absolute;
 	z-index: -1;
-	transition: width 250ms, left 250ms;
+	transition: width 200ms, left 200ms;
 }
 
 @media screen and (min-width: 1800px) {
@@ -202,17 +204,17 @@ h2 > span {
 	}
 
 	.timeline {
-		width: 32rem;
+		width: 34rem;
 	}
 
 	.etapier::before {
-		width: 6rem;
-		left: -6rem;
+		width: 6.5rem;
+		left: -6.5rem;
 	}
 
 	.etapier-inactive::after {
-		width: 6rem;
-		left: -6rem;
+		width: 6.5rem;
+		left: -6.5rem;
 	}
 }
 
