@@ -1,6 +1,7 @@
 const etapiersList = document.querySelectorAll('.etapier');
 const leftArrow = document.querySelector('#left-arrow');
-const rightArrow = document.querySelector('#right-arrow')
+const rightArrow = document.querySelector('#right-arrow');
+const carrousel = document.querySelector('.carrousel');
 let curIndex = 0;
 
 function changeFeaturedFeature(target) {
@@ -12,6 +13,7 @@ function changeFeaturedFeature(target) {
 
 function afficheUpdate(index) {
 
+    carrousel.setAttribute("aria-labelledby", index);
 }
 
 function etapierUpdate(targetIndex) {
@@ -56,13 +58,22 @@ etapiersList.forEach(elem => {
 leftArrow.addEventListener('click', leftArrowActoionner);
 function leftArrowActoionner(event) {
     if (curIndex === 0) return
+    afficheUpdate(curIndex - 1);
     etapierUpdate(curIndex - 1);
 }
 
 rightArrow.addEventListener('click', rightArrowActoinner);
 function rightArrowActoinner(event) {
     if (curIndex === 2) return
-    console.log(curIndex);
-    console.log(curIndex + 1);
+    afficheUpdate(curIndex + 1);
     etapierUpdate(curIndex + 1);
 }
+
+const feature = [
+    {
+        logoPath: 'assets/NH-logo.svg',
+        Title: 'Un nouvel espoir',
+        text: "C'est le premier opus de la saga Star Wars par sa date de sortie, mais le quatrième selon l'ordre chronologique de l'histoire.",
+        date: "1977"
+    }
+] 

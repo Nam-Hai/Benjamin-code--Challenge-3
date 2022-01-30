@@ -89,6 +89,15 @@ h2 > span {
 	transform: translateX(0px);
 	display: flex;
 	flex-direction: row;
+	transition: transform 200ms;
+}
+
+.carrousel[aria-labelledby="1"] {
+	transform: translateX(calc(-100% / 3));
+}
+
+.carrousel[aria-labelledby="2"] {
+	transform: translateX(calc(-200% / 3));
 }
 
 .right img {
